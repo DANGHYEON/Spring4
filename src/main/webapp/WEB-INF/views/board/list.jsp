@@ -31,7 +31,7 @@
 			</c:forEach>
 		
 		</table>
-		<a href="./bankbookInsert" class="btn btn-primary">ADD</a>
+		<a href="./insert" class="btn btn-primary">ADD</a>
 		</div>
 	</div>
 

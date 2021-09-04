@@ -13,6 +13,13 @@
   		SELECT * FROM NOTICE WHERE NUM=#{num}
   	</select>
   	
+  	<insert id="setInsert" parameterType="com.iu.s4.notice.NoticeDTO">
+  		INSERT INTO NOTICE VALUES(notice_seq.nextval,#{title},#{contents},#{writer},sysdate,0)
+  	</insert>
+  	
+  	<delete id="setDelete" parameterType="com.iu.s4.notice.NoticeDTO">
+  		DELETE NOTICE WHERE NUM=#{num}
+  	</delete>
 	
 	  
   </mapper>

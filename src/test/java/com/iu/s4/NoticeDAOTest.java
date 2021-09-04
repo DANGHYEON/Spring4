@@ -16,7 +16,43 @@ public class NoticeDAOTest extends MyJunitTest{
 	@Autowired
 	private NoticeDAO noticeDAO;
 
+	
 	@Test
+	public void setDelete() {
+		NoticeDTO dto = new NoticeDTO();
+		dto.setNum(21);
+		
+		int result = noticeDAO.setDelete(dto);
+		
+		assertNotEquals(0, result);
+	}
+	
+	
+	
+	
+	
+	
+	
+	//@Test
+	public void setInsert() {
+		NoticeDTO dto = new NoticeDTO();
+		dto.setTitle("t3");
+		dto.setContents("c3");
+		dto.setWriter("w3");
+		
+		int result = noticeDAO.setInsert(dto);
+		
+		assertNotEquals(0, result);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	//@Test
 	public void getSelectTest() {
 		NoticeDTO dto = new NoticeDTO();
 		dto.setNum(1);

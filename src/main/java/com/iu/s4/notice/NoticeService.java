@@ -21,6 +21,15 @@ public class NoticeService {
 		return noticeDAO.getSelet(noticeDTO);
 	}
 	
+	public int setInsert(NoticeDTO noticeDTO) {
+		
+		return noticeDAO.setInsert(noticeDTO);
+	}
+	
+	public int setDelete(NoticeDTO noticeDTO) {
+		
+		return noticeDAO.setDelete(noticeDTO);
+	}
 	
 
 }

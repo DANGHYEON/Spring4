@@ -20,5 +20,10 @@
 	<h2>조회수 : ${dto.hits}</h2>
 	</div>
 	
+	<div>
+	<a href="./delete" class="btn btn-danger" >Delete</a>
+	<a href="./update" class="btn btn-success">Update</a>
+	</div>
+	
 </body>
 </html>

@@ -28,6 +28,17 @@ public class NoticeDAO {
   		
   	}
 	
+  	
+  	public int setInsert(NoticeDTO noticeDTO) {
+  		
+  		return sqlSession.insert(NAMESPACE+"setInsert", noticeDTO);
+  	}
+  	
+  	
+  	public int setDelete(NoticeDTO noticeDTO) {
+  		return sqlSession.delete(NAMESPACE+"setDelete",noticeDTO);
+  	}
+  	
 	
 	
 }
