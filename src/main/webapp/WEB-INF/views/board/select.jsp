@@ -21,7 +21,7 @@
 	</div>
 	
 	<div>
-	<a href="./delete" class="btn btn-danger" >Delete</a>
+	<a href="./delete?num=${dto.num}" class="btn btn-danger" >Delete</a>
 	<a href="./update" class="btn btn-success">Update</a>
 	</div>
 	

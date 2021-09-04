@@ -17,7 +17,25 @@ public class NoticeDAOTest extends MyJunitTest{
 	private NoticeDAO noticeDAO;
 
 	
+	
 	@Test
+	public void setUpdate() {
+		NoticeDTO dto = new NoticeDTO();
+		dto.setNum(61);
+		dto.setTitle("String");
+		dto.setContents("String2");
+		
+		int result = noticeDAO.setUpdate(dto);
+		
+		assertNotEquals(0, result);
+	}
+	
+	
+	
+	
+	
+	
+	//@Test
 	public void setDelete() {
 		NoticeDTO dto = new NoticeDTO();
 		dto.setNum(21);

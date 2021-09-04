@@ -20,6 +20,10 @@
   	<delete id="setDelete" parameterType="com.iu.s4.notice.NoticeDTO">
   		DELETE NOTICE WHERE NUM=#{num}
   	</delete>
-	
-	  
+  	
+  	<update id="setUpdate" parameterType="com.iu.s4.notice.NoticeDTO">
+  		UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents}, REGDATE=sysdate
+  		WHERE NUM =#{num}
+  	</update> 
+  	 
   </mapper>

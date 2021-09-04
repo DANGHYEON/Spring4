@@ -31,5 +31,11 @@ public class NoticeService {
 		return noticeDAO.setDelete(noticeDTO);
 	}
 	
+	public int setUpdate(NoticeDTO noticeDTO) {
+		
+		return noticeDAO.setUpdate(noticeDTO);
+	}
+	
+	
 
 }

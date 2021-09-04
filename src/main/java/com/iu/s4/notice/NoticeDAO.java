@@ -39,6 +39,12 @@ public class NoticeDAO {
   		return sqlSession.delete(NAMESPACE+"setDelete",noticeDTO);
   	}
   	
+  	public int setUpdate(NoticeDTO noticeDTO) {
+  		
+  		return sqlSession.update(NAMESPACE+"setUpdate",noticeDTO);
+  		
+  	}
+  	
 	
 	
 }

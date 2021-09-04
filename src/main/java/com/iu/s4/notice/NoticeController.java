@@ -17,7 +17,7 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	
-	@RequestMapping("/list")
+	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv) {
 		
 		List<NoticeDTO> ar	=noticeService.getList();
@@ -29,7 +29,7 @@ public class NoticeController {
 	}
 	
 	
-	@RequestMapping("/select")
+	@RequestMapping("select")
 	public ModelAndView select(NoticeDTO noticeDTO,ModelAndView mv) {
 		noticeDTO=noticeService.getSelect(noticeDTO);
 		
@@ -40,34 +40,52 @@ public class NoticeController {
 		
 	}
 	
-	@RequestMapping(value = "/insert", method = RequestMethod.GET )
-	public ModelAndView insert(ModelAndView mv) {
-		
+	@RequestMapping("insert")
+	public ModelAndView test(ModelAndView mv){
 		mv.setViewName("/board/insert");
 		
 		return mv;
 	}
 	
+	  
+	  @RequestMapping(value = "insert", method = RequestMethod.POST ) 
+	  public ModelAndView insert(NoticeDTO noticeDTO, ModelAndView mv) {
+	  
+	  int result = noticeService.setInsert(noticeDTO);
+	  
+	  mv.setViewName("redirect:/notice/list");
+	  
+	  return mv;
+	  
+	  }
+	 
 	
-	@RequestMapping(value = "/insert", method = RequestMethod.POST )
-	public ModelAndView insert(NoticeDTO noticeDTO, ModelAndView mv) {
-		
-		int result = noticeService.setInsert(noticeDTO);
-		
-		mv.setViewName("redirect:/notice/list");
-		
-		return mv;
-		
-		
-	}
-	
-	@RequestMapping("/delete")
+	@RequestMapping("delete")
 	public String delete(NoticeDTO noticeDTO) {
 		
 		int result = noticeService.setDelete(noticeDTO);
 		
 		return "redirect:/notice/list";
 		
+		
+	}
+	
+	
+	@RequestMapping("update")
+	public ModelAndView update(ModelAndView mv) {
+		
+		mv.setViewName("/board/update");
+		return mv;
+		
+	}
+	
+
+	@RequestMapping(value = "update", method=RequestMethod.POST)
+	public String update(NoticeDTO noticeDTO) {
+		
+		int result = noticeService.setUpdate(noticeDTO);
+		
+		return "redirect:/notice/list";
 		
 	}
 	
