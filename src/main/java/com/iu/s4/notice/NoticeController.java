@@ -71,10 +71,12 @@ public class NoticeController {
 	}
 	
 	
-	@RequestMapping("update")
-	public ModelAndView update(ModelAndView mv) {
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public ModelAndView update(NoticeDTO noticeDTO,ModelAndView mv) {
+		noticeDTO = noticeService.getSelect(noticeDTO);
 		
 		mv.setViewName("/board/update");
+		mv.addObject("update", noticeDTO);
 		return mv;
 		
 	}

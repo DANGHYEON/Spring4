@@ -22,7 +22,7 @@
 	
 	<div>
 	<a href="./delete?num=${dto.num}" class="btn btn-danger" >Delete</a>
-	<a href="./update" class="btn btn-success">Update</a>
+	<a href="./update?num=${dto.num}" class="btn btn-success">Update</a>
 	</div>
 	
 </body>
