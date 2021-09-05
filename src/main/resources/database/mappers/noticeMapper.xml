@@ -5,8 +5,9 @@
   
   <mapper namespace="com.iu.s4.notice.NoticeDAO">
   
-  	<select id="getList" resultType="com.iu.s4.notice.NoticeDTO">
-  		SELECT * FROM NOTICE
+  	<select id="getList" resultType="com.iu.s4.notice.NoticeDTO" parameterType="com.iu.s4.util.Pager">
+  		SELECT * FROM (SELECT rownum R, NC.* FROM(SELECT * FROM NOTICE ORDER BY num DESC) NC)
+  		WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	
   	<select id="getSelect" parameterType="com.iu.s4.notice.NoticeDTO" resultType="com.iu.s4.notice.NoticeDTO">

@@ -31,6 +31,27 @@
 			</c:forEach>
 		
 		</table>
+		<nav aria-label="Page navigation example">
+  			<ul class="pagination">
+   			 <li class="page-item">
+   			  <a class="page-link" href="#" aria-label="Previous">
+      	  <span aria-hidden="true">&laquo;</span>
+     	 </a>
+      	</li>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
+		 <li class="page-item"><a class="page-link" href="./list?pn=${n}">${n}</a></li>
+		</c:forEach>
+		<li class="page-item">
+     	 <a class="page-link" href="#" aria-label="Next">
+      	  <span aria-hidden="true">&raquo;</span>
+      		</a>
+    		</li>
+  			</ul>
+		</nav>
+		
+		
+		
+		
 		<a href="./insert" class="btn btn-primary">ADD</a>
 		</div>
 	</div>
