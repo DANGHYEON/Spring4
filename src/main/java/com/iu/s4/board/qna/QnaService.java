@@ -2,10 +2,16 @@ package com.iu.s4.board.qna;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.iu.s4.board.BoardDTO;
 import com.iu.s4.board.BoardService;
-
+@Service
 public class QnaService implements BoardService {
+	
+	@Autowired
+	private QnaDAO qnaDAO;
 
 	@Override
 	public Long getCount() throws Exception {
@@ -16,7 +22,7 @@ public class QnaService implements BoardService {
 	@Override
 	public List<BoardDTO> getList() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return qnaDAO.getList();
 	}
 
 	@Override

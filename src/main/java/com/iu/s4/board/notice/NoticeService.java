@@ -2,10 +2,18 @@ package com.iu.s4.board.notice;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.iu.s4.board.BoardDTO;
 import com.iu.s4.board.BoardService;
 
+@Service
 public class NoticeService implements BoardService {
+	
+	@Autowired
+	private NoticeDAO noticeDAO;
+	
 
 	@Override
 	public Long getCount() throws Exception {
@@ -16,7 +24,7 @@ public class NoticeService implements BoardService {
 	@Override
 	public List<BoardDTO> getList() throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.getList();
 	}
 
 	@Override
