@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.s4.board.BoardDAO;
 import com.iu.s4.board.BoardDTO;
+import com.iu.s4.board.util.Pager;
 
 @Repository
 public class QnaDAO implements BoardDAO{
@@ -19,44 +20,43 @@ public class QnaDAO implements BoardDAO{
 	
 
 	@Override
-	public Long getCount() throws Exception {
+	public Long getCount(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESAPCE+"getCount", pager);
 	}
 
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESAPCE+"getList");
+		return sqlSession.selectList(NAMESAPCE+"getList",pager);
 	}
 
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESAPCE+"getSelect", boardDTO);
 	}
 
 	@Override
 	public int setInsert(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESAPCE+"setInsert", boardDTO);
 	}
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESAPCE+"setDelete", boardDTO);
 	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESAPCE+"setUpdate", boardDTO);
 	}
 	
 	//답글
 	public int setReply(QnaDTO qnaDTO) throws Exception {
-		
 		
 		return 0;
 	}

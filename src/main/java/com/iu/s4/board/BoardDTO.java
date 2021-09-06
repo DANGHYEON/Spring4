@@ -6,6 +6,7 @@ public class BoardDTO {
 	
 	private Long num;
 	private String title;
+	private String contents;
 	private String writer;
 	private Date regDate;
 	private Long hits;
@@ -15,6 +16,12 @@ public class BoardDTO {
 	
 	
 	
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
 	public Long getNum() {
 		return num;
 	}

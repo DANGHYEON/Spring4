@@ -5,8 +5,46 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
   
+   <select id="getCount" resultType="Long" parameterType="Pager">
+  		SELECT COUNT(NUM) FROM NOTICE
+  		WHERE 
+			<choose>
+			<when test="kind == 'num'">
+			 NUM 
+			 </when>
+			 <when test="kind == 'name'">
+			 TITLE 
+			 </when>
+			 <otherwise>
+			 WRITER 
+			 </otherwise>
+			 </choose>
+			 LIKE '%' || #{search} ||'%'
+  	</select>
+  
   <select id="getList" resultType="NoticeDTO" >
-  		SELECT * FROM (SELECT rownum R, NC.* FROM(SELECT * FROM NOTICE ORDER BY num DESC) NC)
+  		SELECT * FROM 
+		(SELECT rownum R, NC.* FROM 
+		(SELECT * 
+			FROM NOTICE
+			WHERE 
+			<choose>
+			<when test="kind == 'num'">
+			 NUM 
+			 </when>
+			 <when test="kind == 'name'">
+			 TITLE 
+			 </when>
+			 <otherwise>
+			 WRITER 
+			 </otherwise>
+			 </choose>
+			 LIKE '%' || #{search} ||'%'
+			ORDER BY NUM DESC
+			) 
+		NC
+		) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
   	</select>
   	
   	<select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">

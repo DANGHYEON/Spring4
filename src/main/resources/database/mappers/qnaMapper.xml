@@ -5,10 +5,66 @@
   
   <mapper namespace="com.iu.s4.board.qna.QnaDAO">
   
+  <select id="getCount" resultType="Long" parameterType="Pager">
+  		SELECT COUNT(NUM) FROM QNA
+  		WHERE 
+			<choose>
+			<when test="kind == 'num'">
+			 NUM 
+			 </when>
+			 <when test="kind == 'name'">
+			 TITLE 
+			 </when>
+			 <otherwise>
+			 WRITER 
+			 </otherwise>
+			 </choose>
+			 LIKE '%' || #{search} ||'%'
+  	</select>
+  
+  
   <select id="getList" resultType="QnaDTO">
-  	SELECT * FROM QNA
+  		SELECT * FROM 
+		(SELECT rownum R, QN.* FROM 
+		(SELECT * 
+			FROM QNA
+			WHERE 
+			<choose>
+			<when test="kind == 'num'">
+			 NUM 
+			 </when>
+			 <when test="kind == 'name'">
+			 TITLE 
+			 </when>
+			 <otherwise>
+			 WRITER 
+			 </otherwise>
+			 </choose>
+			 LIKE '%' || #{search} ||'%'
+			ORDER BY NUM DESC
+			) 
+		QN
+		) 
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
   </select>
   
+  <select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
+  		SELECT * FROM QNA WHERE NUM=#{num}
+  	</select>
+  	
+  	<insert id="setInsert" parameterType="BoardDTO">
+  		INSERT INTO QNA VALUES(notice_seq.nextval,#{title},#{contents},#{writer},sysdate,0)
+  	</insert>
+  	
+  	<delete id="setDelete" parameterType="BoardDTO">
+  		DELETE QNA WHERE NUM=#{num}
+  	</delete>
+	
+	<update id="setUpdate" parameterType="BoardDTO">
+  		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents}, REGDATE=sysdate
+  		WHERE NUM =#{num}
+  	</update> 
+	
 	
 	  
   </mapper>
