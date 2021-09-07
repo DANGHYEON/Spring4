@@ -18,12 +18,16 @@
 	<h2>글제목 : ${dto.title}</h2>
 	<h2>글내용 : ${dto.contents}</h2>
 	<h2>작성자 : ${dto.writer}</h2>
+	<h2>작성일 : ${dto.regDate}</h2>
 	<h2>조회수 : ${dto.hits}</h2>
 	</div>
 	
 	<div>
 	<a href="./delete?num=${dto.num}" class="btn btn-danger" >Delete</a>
 	<a href="./update?num=${dto.num}" class="btn btn-success">Update</a>
+	<c:if test="${board eq 'qna'}">
+		<a href="./reply?num=${dto.num}">Reply</a>
+	</c:if>
 	</div>
 	
 </body>

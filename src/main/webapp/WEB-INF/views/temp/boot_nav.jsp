@@ -17,7 +17,7 @@
           <a class="nav-link" href="${pageContext.request.contextPath}/notice/list">notice list</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/qna/list">qna list</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/qna/list">QnA list</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

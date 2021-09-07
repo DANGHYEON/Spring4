@@ -9,11 +9,11 @@
   		SELECT COUNT(NUM) FROM QNA
   		WHERE 
 			<choose>
-			<when test="kind == 'num'">
-			 NUM 
-			 </when>
-			 <when test="kind == 'title'">
+			<when test="kind == 'title'">
 			 TITLE 
+			 </when>
+			 <when test="kind == 'contents'">
+			 CONTENTS
 			 </when>
 			 <otherwise>
 			 WRITER 
@@ -30,31 +30,40 @@
 			FROM QNA
 			WHERE 
 			<choose>
-			<when test="kind == 'num'">
-			 NUM 
+			<when test="kind == 'title'">
+			 TITLE
 			 </when>
-			 <when test="kind == 'title'">
-			 TITLE 
+			 <when test="kind == 'contents'">
+			 CONTENTS
 			 </when>
 			 <otherwise>
 			 WRITER 
 			 </otherwise>
 			 </choose>
 			 LIKE '%' || #{search} ||'%'
-			ORDER BY NUM DESC
+			ORDER BY REF DESC, STEP ASC
 			) 
 		QN
 		) 
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
   </select>
   
-  <select id="getSelect" parameterType="BoardDTO" resultType="NoticeDTO">
+  <select id="getSelect" parameterType="BoardDTO" resultType="QnaDTO">
   		SELECT * FROM QNA WHERE NUM=#{num}
   	</select>
   	
   	<insert id="setInsert" parameterType="BoardDTO">
-  		INSERT INTO QNA VALUES(notice_seq.nextval,#{title},#{contents},#{writer},sysdate,0)
+  		INSERT INTO QNA VALUES(QNA_seq.nextval,#{title},#{contents},#{writer},sysdate,0,QNA_seq.currval,0,0)
   	</insert>
+  	
+  	<update id="setReplyUpdate" parameterType="QnaDTO">
+  		UPDATE QNA SET STEP=STEP+1 WHERE REF=#{ref} AND STEP>#{step}
+  	</update>
+  	
+  	<insert id="setReply" parameterType="QnaDTO">
+  		INSERT INTO QNA VALUES(QNA_seq.nextval,#{title},#{contents},#{writer},sysdate,0,#{ref},#{step},#{depth})
+  	</insert>
+  	
   	
   	<delete id="setDelete" parameterType="BoardDTO">
   		DELETE QNA WHERE NUM=#{num}
@@ -64,6 +73,8 @@
   		UPDATE QNA SET TITLE=#{title}, CONTENTS=#{contents}, REGDATE=sysdate
   		WHERE NUM =#{num}
   	</update> 
+  	
+  	
 	
 	
 	  

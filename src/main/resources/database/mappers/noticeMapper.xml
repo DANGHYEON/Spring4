@@ -9,11 +9,11 @@
   		SELECT COUNT(NUM) FROM NOTICE
   		WHERE 
 			<choose>
-			<when test="kind == 'num'">
-			 NUM 
+			<when test="kind == 'title'">
+			 TITLE
 			 </when>
-			 <when test="kind == 'title'">
-			 TITLE 
+			 <when test="kind == 'contents'">
+			 CONTENTS
 			 </when>
 			 <otherwise>
 			 WRITER 
@@ -29,11 +29,11 @@
 			FROM NOTICE
 			WHERE 
 			<choose>
-			<when test="kind == 'num'">
-			 NUM 
-			 </when>
-			 <when test="kind == 'title'">
+			<when test="kind == 'title'">
 			 TITLE 
+			 </when>
+			 <when test="kind == 'contents'">
+			 CONTENTS
 			 </when>
 			 <otherwise>
 			 WRITER 
