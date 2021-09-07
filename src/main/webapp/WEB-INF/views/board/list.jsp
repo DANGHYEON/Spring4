@@ -21,8 +21,8 @@
 		 <div class="input-group mb-3" >
 		  <select name="kind" class="form-select form-select-sm" aria-label=".form-select-sm example">
 			  <option value="num">Num</option>
-			  <option value="name">Title</option>
-			  <option value="rate">Writer</option>
+			  <option value="title">Title</option>
+			  <option value="writer">Writer</option>
 			</select>
 		  
 		  <input type="text" name="search" class="form-control" aria-label="Text input with dropdown button">

@@ -12,7 +12,7 @@
 			<when test="kind == 'num'">
 			 NUM 
 			 </when>
-			 <when test="kind == 'name'">
+			 <when test="kind == 'title'">
 			 TITLE 
 			 </when>
 			 <otherwise>
@@ -22,7 +22,7 @@
 			 LIKE '%' || #{search} ||'%'
   	</select>
   
-  <select id="getList" resultType="NoticeDTO" >
+  <select id="getList" resultType="NoticeDTO" parameterType="Pager">
   		SELECT * FROM 
 		(SELECT rownum R, NC.* FROM 
 		(SELECT * 
@@ -32,7 +32,7 @@
 			<when test="kind == 'num'">
 			 NUM 
 			 </when>
-			 <when test="kind == 'name'">
+			 <when test="kind == 'title'">
 			 TITLE 
 			 </when>
 			 <otherwise>
