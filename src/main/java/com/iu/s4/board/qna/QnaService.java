@@ -23,6 +23,8 @@ public class QnaService implements BoardService {
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
 		// TODO Auto-generated method stub
+		pager.makeNum(qnaDAO.getCount(pager));
+		pager.makeRow();
 		return qnaDAO.getList(pager);
 	}
 
