@@ -74,6 +74,9 @@
   		WHERE NUM =#{num}
   	</update> 
   	
+  		<update id="setHitUpdate" parameterType="BoardDTO">
+  			UPDATE QNA SET HITS = HITS+1 WHERE NUM=#{num}
+  		</update>
   	
 	
 	
