@@ -31,11 +31,11 @@
 			
 				
 						
-			<button type="submit" class="btn btn-success">Add</button>
+			<button type="button" id ="bt1" class="btn btn-success">Add</button>
 			
 		</form>
 	</div>
 
-
+<script type="text/javascript" src="../resources/js/boardCheck.js"></script>
 </body>
 </html>
