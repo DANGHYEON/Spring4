@@ -7,21 +7,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../temp/boot_head.jsp"></c:import>
+<style type="text/css">
+	.er{
+		color:red;
+	}
+</style>
 </head>
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
 <h1>${board} Insert Page</h1>
 
 <div class="container-fluid">
-		<form class="col-md-5 mx-auto" action="./insert" method="post">
+		<form id="frm" class="col-md-5 mx-auto" action="./insert" method="post">
 			<div class="mb-3">
   			<label for="title" class="form-label">Title</label>
   				<input type="text" class="form-control" name="title" id="title" placeholder="Enter Title">
+  				<div id="t1" class="er"></div>
 			</div>
 			
 			<div class="mb-3">
   			<label for="writer" class="form-label">Writer</label>
   				<input type="text" class="form-control" name="writer" id="writer" placeholder="Enter writer">
+  				<div id="w1" class="er"></div>
 			</div>		
 			
 			<div class="mb-3">
