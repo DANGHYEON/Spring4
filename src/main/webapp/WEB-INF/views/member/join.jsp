@@ -16,13 +16,13 @@
 	
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">ID</label>
-  			<input type="text" class="form-control es" id="id" placeholder="id">
+  			<input type="text" class="form-control es" name="id" id="id" placeholder="id">
   			<button id="idCheck" type="button">ID중복체크</button>
   			<div id="idResult"></div>
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">password</label>
-  			<input type="password" class="form-control es pw" id="exampleFormControlInput1" placeholder="password">
+  			<input type="password" class="form-control es pw"  name="pw" id="exampleFormControlInput1" placeholder="password">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">confirm password</label>
@@ -30,15 +30,15 @@
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">Name</label>
-  			<input type="text" class="form-control es" id="exampleFormControlInput1" placeholder="Name">
+  			<input type="text" class="form-control es" name="name" id="exampleFormControlInput1" placeholder="Name">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">Phone</label>
-  			<input type="tel" class="form-control es" id="exampleFormControlInput1" placeholder="Phone-number">
+  			<input type="tel" class="form-control es" name="phone" id="exampleFormControlInput1" placeholder="Phone-number">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">email</label>
-  			<input type="email" class="form-control es" id="exampleFormControlInput1" placeholder="xxxxx@naver.com">
+  			<input type="email" class="form-control es" name="email" id="exampleFormControlInput1" placeholder="xxxxx@naver.com">
 	</div>
 	
 	<button id="btn" type="button">회원가입</button>

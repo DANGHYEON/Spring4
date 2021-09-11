@@ -10,6 +10,10 @@
   	SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
   </select>
   
+  <insert id="setJoin" parameterType="MemberDTO">
+  	INSERT INTO MEMBER VALUES(#{id},#{pw},#{name},#{phone},#{email})
+  </insert>
+  
   
   
   <select id="getIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
