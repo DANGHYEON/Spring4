@@ -87,9 +87,10 @@
 		</nav>
 		
 		
-		
-		
+		<c:if test='${not empty member}' >
 		<a href="./insert" class="btn btn-primary">ADD</a>
+		</c:if>
+		
 		</div>
 	</div>
 
