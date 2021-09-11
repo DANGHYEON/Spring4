@@ -10,6 +10,8 @@
   		<typeAlias type="com.iu.s4.board.qna.QnaDTO" alias="QnaDTO"/>
   		<typeAlias type="com.iu.s4.board.util.Pager" alias="Pager"/>
   		<typeAlias type="java.lang.Long" alias="Long"/>
+  		<typeAlias type="com.iu.s4.member.MemberDAO" alias="MemberDAO"/>
+  		<typeAlias type="com.iu.s4.member.MemberDTO" alias="MemberDTO"/>
   	</typeAliases>
   
   

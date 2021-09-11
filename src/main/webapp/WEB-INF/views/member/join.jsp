@@ -12,39 +12,41 @@
 <c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>Join Page</h1>
 	<div class="container-fluid">
-	<form class="col-md-4 mx-auto">
+	<form id="frm" class="col-md-4 mx-auto" action="join" method="post">
 	
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">ID</label>
-  			<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="id">
+  			<input type="text" class="form-control es" id="id" placeholder="id">
+  			<button id="idCheck" type="button">ID중복체크</button>
+  			<div id="idResult"></div>
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">password</label>
-  			<input type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+  			<input type="password" class="form-control es pw" id="exampleFormControlInput1" placeholder="password">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">confirm password</label>
-  			<input type="password" class="form-control" id="exampleFormControlInput1" placeholder="confirm password">
+  			<input type="password" class="form-control es pw" id="exampleFormControlInput1" placeholder="confirm password">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">Name</label>
-  			<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Name">
+  			<input type="text" class="form-control es" id="exampleFormControlInput1" placeholder="Name">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">Phone</label>
-  			<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Phone-number">
+  			<input type="tel" class="form-control es" id="exampleFormControlInput1" placeholder="Phone-number">
 	</div>
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">email</label>
-  			<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="xxxxx@naver.com">
+  			<input type="email" class="form-control es" id="exampleFormControlInput1" placeholder="xxxxx@naver.com">
 	</div>
 	
-	<button type="submit">회원가입</button>
+	<button id="btn" type="button">회원가입</button>
 	</form>
 	</div>
 
 	
 	
-
+<script type="text/javascript" src="../resources/js/join.js"></script>
 </body>
 </html>
