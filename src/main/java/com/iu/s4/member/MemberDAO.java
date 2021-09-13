@@ -31,6 +31,10 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE+"setOut", memberDTO);
 	}
 	
+	public int setUpdate(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
+	}
+	
 	
 
 }

@@ -27,5 +27,9 @@ public class MemberService {
 		return memberDAO.setOut(memberDTO);
 	}
 	
+	public int setUpdate(MemberDTO memberDTO) throws Exception{
+		return memberDAO.setUpdate(memberDTO);
+	}
+	
 
 }

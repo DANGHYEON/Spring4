@@ -25,6 +25,8 @@
 	<div>
 	<a href="./delete?num=${dto.num}" class="btn btn-danger" >Delete</a>
 	<a href="./update?num=${dto.num}" class="btn btn-success">Update</a>
+	
+	
 	<c:if test="${board eq 'qna'}">
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>

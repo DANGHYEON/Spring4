@@ -17,6 +17,9 @@
 	<button id="btn" type="button">회원탈퇴</button>
 	</form>
 	
+	<a href="./update">수정</a>
+	
+	
 	<script type="text/javascript" src="../resources/js/mypage.js"></script>
 </body>
 </html>
