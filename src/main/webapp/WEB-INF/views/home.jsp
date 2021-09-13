@@ -21,6 +21,9 @@
 		<c:if test='${empty member}'>
 		<h3>Login을 하기전 보이는 문장</h3>
 		</c:if>
+
 	<h1>Config</h1>
+	<h1>Member</h1>
+
 </body>
 </html>
