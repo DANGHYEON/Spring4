@@ -22,6 +22,21 @@ public class MemberController {
 	
 	
 	
+
+	
+	
+	@GetMapping("out")
+	public ModelAndView out(MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.setOut(memberDTO);
+		System.out.println(memberDTO.getId());
+		mv.setViewName("redirect:./logout");
+		
+		return mv;
+	}
+	
+	
+	
 	@GetMapping("mypage")
 	public ModelAndView mypage() throws Exception {
 

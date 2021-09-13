@@ -8,6 +8,8 @@
  const ch2 = document.getElementsByClassName("check1");
  let pel = false;
  
+
+ 
 ch.addEventListener("click",function(){
 		
 		for(let i of ch1){	

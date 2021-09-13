@@ -27,6 +27,10 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"setJoin", memberDTO);
 	}
 	
+	public int setOut(MemberDTO memberDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setOut", memberDTO);
+	}
+	
 	
 
 }

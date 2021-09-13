@@ -14,8 +14,26 @@ public class MemberDAOTest extends MyJunitTest{
 	private MemberDAO memberDAO;
 	
 	
+	
 	@Test
-	public void setJoin() throws Exception{
+	public void setOutTest() throws Exception{
+		MemberDTO dto = new MemberDTO();
+		dto.setId("t11");
+		
+		int result = memberDAO.setOut(dto);
+		
+		assertNotEquals(0, result);
+		
+	}
+	
+	
+	
+
+	
+	
+	
+	//@Test
+	public void setJoinTest() throws Exception{
 		MemberDTO dto = new MemberDTO();
 		dto.setId("t11");
 		dto.setPw("t11");

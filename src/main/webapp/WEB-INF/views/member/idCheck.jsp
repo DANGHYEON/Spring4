@@ -21,7 +21,7 @@
 		</c:if>
 	</div>
 
-	<form id="frm" class="col-md-4 mx-auto" action="idCheck" method="get">
+	<form id="frm"  class="col-md-4 mx-auto" action="idCheck" method="get">
 		<div class="mb-3">
 	  			<label for="exampleFormControlInput1" class="form-label">ID</label>
 	  			<input type="text" name="id" value="${param.id}" class="form-control es" id="id" placeholder="id">

@@ -23,5 +23,9 @@ public class MemberService {
 		return memberDAO.setJoin(memberDTO);
 	}
 	
+	public int setOut(MemberDTO memberDTO) throws Exception{
+		return memberDAO.setOut(memberDTO);
+	}
+	
 
 }

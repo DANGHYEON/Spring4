@@ -19,6 +19,10 @@
   <select id="getIdCheck" parameterType="MemberDTO" resultType="MemberDTO">
   	SELECT ID FROM MEMBER WHERE ID=#{id}
   </select>
-	
+  
+  
+  <delete id="setOut" parameterType="MemberDTO">
+  	DELETE MEMBER WHERE ID=#{id}
+  </delete>
 	  
   </mapper>
