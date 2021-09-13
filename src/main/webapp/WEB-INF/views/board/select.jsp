@@ -23,9 +23,10 @@
 	</div>
 	
 	<div>
+	<c:if test="${not empty member and member.id eq dto.writer}">
 	<a href="./delete?num=${dto.num}" class="btn btn-danger" >Delete</a>
 	<a href="./update?num=${dto.num}" class="btn btn-success">Update</a>
-	
+	</c:if>
 	
 	<c:if test="${board eq 'qna'}">
 		<a href="./reply?num=${dto.num}">Reply</a>

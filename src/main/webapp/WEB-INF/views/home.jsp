@@ -5,6 +5,7 @@
 <head>
 	<title>Home</title>
 <c:import url="./temp/boot_head.jsp"></c:import>
+
 </head>
 <body>
 <c:import url="./temp/boot_nav.jsp"></c:import>
@@ -22,8 +23,16 @@
 		<h3>Login을 하기전 보이는 문장</h3>
 		</c:if>
 
-	<h1>Config</h1>
-	<h1>Member</h1>
+
+<button id="btn">Click</button>
+
+<script type="text/javascript">
+	$("#btn").click(function(){
+		alert('alert');
+	});
+
+	
+</script>
 
 </body>
 </html>
