@@ -81,6 +81,9 @@ public class MemberService {
 	}
 	
 	public int setOut(MemberDTO memberDTO) throws Exception{
+		
+		
+		
 		return memberDAO.setOut(memberDTO);
 	}
 	
