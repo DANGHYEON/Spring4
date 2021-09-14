@@ -13,7 +13,7 @@
 <c:import url="../temp/boot_nav.jsp"></c:import>
 	<h1>Join Page</h1>
 	<div class="container-fluid">
-	<form id="frm" class="col-md-4 mx-auto" action="join" method="post">
+	<form id="frm" class="col-md-4 mx-auto" action="join" method="post" enctype="multipart/form-data">
 	
 	<div class="mb-3">
   			<label for="exampleFormControlInput1" class="form-label">ID</label>
@@ -44,29 +44,18 @@
 	
 	
 	
+ 	 <div class="mb-3" id="f">
+   		 <label for="photo" class="form-label">Photo</label>
+    	<input type="file" class="form-control put" id="photo" name="photo" >
+  	</div>
+
 	
 	
-	<div class="mb-3 my-4" id="files">
-	<button id="add" type="button">File add</button>
-	</div>
-	
-	<!-- input file 추가 영역 -->
-	<div id = "addResult">
-			
-	</div>
-	
-	
-	
-	<button id="btn" type="button">회원가입</button>
+	<button id="btn" type="submit">회원가입</button>
 	</form>
 	</div>
 	
-<!-- <div class="mb-3" id="f">
-  			<label for="photo" class="form-label">Photo</label>
-  			<input type="file" class="form-control es" name="photo" id="photo" >
-	</div> -->
-	
-<script type="text/javascript" src="../resources/js/file.js"></script>
-<script type="text/javascript" src="../resources/js/join.js"></script>
+
+<!-- <script type="text/javascript" src="../resources/js/join.js"></script> -->
 </body>
 </html>

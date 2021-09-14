@@ -11,6 +11,10 @@
 	<h1>My page</h1>
 	<h1>ID : ${member.id}</h1>
 	<h1>Email : ${member.email}</h1>
+	<div>
+		<img alt="" src="../resources/upload/member/${files.fileName}">
+	</div>
+	
 	
 	<form action="./out" id="frm">
 	<input type="hidden" name="id" value="${member.id}">

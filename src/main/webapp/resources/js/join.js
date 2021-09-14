@@ -22,7 +22,7 @@
 	
 	if(result){
 	alert("성공");
-	//	$("#frm").submit();
+	$("#frm").submit();
 	}else{
 	alert("필수입력");
 	$(t).forcus();
