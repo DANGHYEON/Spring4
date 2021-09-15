@@ -17,6 +17,11 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	@Autowired
+	private HttpSession session;
+	@Autowired
+	private ServletContext servletContext;
+	
 	
 	public MemberDTO getIdCheck(MemberDTO memberDTO) throws Exception {
 		return memberDAO.getIdCheck(memberDTO);
@@ -36,8 +41,9 @@ public class MemberService {
 		//1. 어느 폴더에 저장
 		// /resources/upload/member
 		//2. application(ServletContext) 객체 필요
-		ServletContext sContext = session.getServletContext();
-		String realpath = sContext.getRealPath("/resources/upload/member/");
+			
+		//	servletContext = this.session.getServletContext();
+		String realpath = this.servletContext.getRealPath("/resources/upload/member/");
 		System.out.println("RealPath : "+realpath);
 		
 		//3. 폴더확인
@@ -81,8 +87,15 @@ public class MemberService {
 	}
 	
 	public int setOut(MemberDTO memberDTO) throws Exception{
+		//1. 무슨 폴더
+		String realPath = servletContext.getRealPath("/resources/upload/member/");
 		
+		//2. 무슨 파일
+		MemberFilesDTO memberFilesDTO = memberDAO.getFile(memberDTO);
 		
+		//3. 파일 삭제
+		File file = new File(realPath, memberFilesDTO.getFileName());
+		file.delete();
 		
 		return memberDAO.setOut(memberDTO);
 	}

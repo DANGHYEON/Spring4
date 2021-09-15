@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s4.board.BoardDTO;
@@ -79,9 +80,11 @@ public class QnaController {
 	}
 	
 	@PostMapping("insert")
-	public String insert(BoardDTO boardDTO) throws Exception {
+	public String insert(BoardDTO boardDTO,MultipartFile [] files) throws Exception {
 		
-		int result = qnaService.setInsert(boardDTO);
+	
+		
+		int result = qnaService.setInsert(boardDTO,files);
 		
 		return "redirect:./list";
 		

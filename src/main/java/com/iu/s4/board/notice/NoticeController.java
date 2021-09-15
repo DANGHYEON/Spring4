@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s4.board.BoardDTO;
@@ -64,16 +65,20 @@ public class NoticeController {
 	}
 	
 	@PostMapping("insert")
-	public String insert(BoardDTO boardDTO) throws Exception {
+	public ModelAndView insert(BoardDTO boardDTO, MultipartFile [] files) throws Exception {
+		//original file name 출력
 		
-		int result = noticeService.setInsert(boardDTO);
+		for(MultipartFile files1 : files) {
+			System.out.println(files1.getOriginalFilename());
+		}
 		
-		return "redirect:./list";
 		
-		/*
-		 * System.out.println("Insert : "+bankBookDTO.getBookName());
-		 * System.out.println(bankBookDTO.getBookSale());
-		 */
+		ModelAndView mv = new ModelAndView();
+		int result = noticeService.setInsert(boardDTO,files);
+		mv.setViewName("redirect:./list");
+		return mv;
+		
+		
 		
 	}
 	
