@@ -27,7 +27,10 @@ public interface BoardDAO {
 	//조회수 업데이트
 	public int setHitUpdate(BoardDTO boardDTO) throws Exception;
 	
+	//file
+	public int setFile(BoardFilesDTO boardFilesDTO) throws Exception;
 	
 	
+	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception;
 
 }

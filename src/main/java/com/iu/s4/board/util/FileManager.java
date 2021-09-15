@@ -10,7 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class FileManager {
-
+	//파일 삭제
+	public void fileDelete() {
+		
+	}
+	
 	
 	//fileSave
 	//파일 저장

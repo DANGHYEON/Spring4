@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.s4.board.BoardDTO;
+import com.iu.s4.board.BoardFilesDTO;
 import com.iu.s4.board.BoardService;
 import com.iu.s4.board.util.FileManager;
 import com.iu.s4.board.util.Pager;
@@ -24,6 +25,13 @@ public class NoticeService implements BoardService {
 	private FileManager fileManager;
 	@Autowired
 	private ServletContext servletContext;
+	
+	
+	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception{
+		
+		return noticeDAO.getFiles(boardDTO);
+				
+	}
 	
 
 	@Override
@@ -42,7 +50,7 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public BoardDTO getSelect(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
+		
 		noticeDAO.setHitUpdate(boardDTO);
 		return noticeDAO.getSelect(boardDTO);
 	}
@@ -55,13 +63,26 @@ public class NoticeService implements BoardService {
 		System.out.println(realPath);
 		File file = new File(realPath);
 		
+		//System.out.println("BE Num : "+boardDTO.getNum());
+		
+		int result = noticeDAO.setInsert(boardDTO);
+		
+		//System.out.println("AT Num : "+boardDTO.getNum());
+		
+		
 		
 		//2. 파일 저장
 		for(MultipartFile multipartFile : files) {
 		 String fileName = fileManager.fileSave(multipartFile, file);
+		 BoardFilesDTO boardFilesDTO = new BoardFilesDTO();
+		 boardFilesDTO.setFileName(fileName);
+		 boardFilesDTO.setOriName(multipartFile.getOriginalFilename());
+		 boardFilesDTO.setNum(boardDTO.getNum());
+		 
+		 result = noticeDAO.setFile(boardFilesDTO);
 		}
 		
-		return 0; 
+		return result; 
 		// noticeDAO.setInsert(boardDTO);
 	}
 

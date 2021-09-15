@@ -22,6 +22,14 @@
 	<h2>조회수 : ${dto.hits}</h2>
 	</div>
 	
+	<c:forEach items="${fileList}" var="f">
+		<div>
+		<img alt="" src="../resources/upload/${board}/${f.fileName}">
+		</div>
+	</c:forEach>
+	
+
+	
 	<div>
 	<c:if test="${not empty member and member.id eq dto.writer}">
 	<a href="./delete?num=${dto.num}" class="btn btn-danger" >Delete</a>

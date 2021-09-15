@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.s4.board.BoardDTO;
+import com.iu.s4.board.BoardFilesDTO;
 import com.iu.s4.board.util.Pager;
 
 @Controller
@@ -25,7 +26,7 @@ public class QnaController {
 	
 	@ModelAttribute("board")
 	public String getBoard() {
-		return "qna";
+		return "QnA";
 		
 	}
 	
@@ -63,8 +64,10 @@ public class QnaController {
 	@GetMapping("select")
 	public ModelAndView select(BoardDTO boardDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		List<BoardFilesDTO> ar = qnaService.getFiles(boardDTO);
 		boardDTO = qnaService.getSelect(boardDTO);
 		mv.addObject("dto", boardDTO);
+		mv.addObject("fileList", ar);
 		mv.setViewName("board/select");
 		 return mv;
 	
@@ -81,8 +84,6 @@ public class QnaController {
 	
 	@PostMapping("insert")
 	public String insert(BoardDTO boardDTO,MultipartFile [] files) throws Exception {
-		
-	
 		
 		int result = qnaService.setInsert(boardDTO,files);
 		

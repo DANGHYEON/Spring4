@@ -5,6 +5,15 @@
   
   <mapper namespace="com.iu.s4.board.qna.QnaDAO">
   
+  <insert id="setFile" parameterType="BoardFilesDTO">
+  	INSERT INTO QNAFILES values(qnafile_seq.nextval,#{num},#{fileName},#{oriName})
+  </insert>
+  
+  <select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
+  	SELECT * FROM QNAFILES WHERE num=#{num}
+  </select>
+  
+  
   <select id="getCount" resultType="Long" parameterType="Pager">
   		SELECT COUNT(NUM) FROM QNA
   		WHERE 
@@ -53,7 +62,10 @@
   	</select>
   	
   	<insert id="setInsert" parameterType="BoardDTO">
-  		INSERT INTO QNA VALUES(QNA_seq.nextval,#{title},#{contents},#{writer},sysdate,0,QNA_seq.currval,0,0)
+  		<selectKey order="BEFORE" resultType="Long" keyProperty="num">
+  			SELECT QNA_seq.nextval FROM DUAL
+  		</selectKey>
+  		INSERT INTO QNA VALUES(#{num},#{title},#{contents},#{writer},sysdate,0,QNA_seq.currval,0,0)
   	</insert>
   	
   	<update id="setReplyUpdate" parameterType="QnaDTO">

@@ -5,6 +5,15 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
   
+  	<insert id="setFile" parameterType="BoardFilesDTO">
+  		INSERT INTO noticefiles values(files_seq.nextval, #{num},#{fileName},#{oriName})
+  	</insert>
+  	
+	<select id="getFiles" parameterType="BoardDTO" resultType="BoardFilesDTO">
+		SELECT * FROM NOTICEFILES WHERE num = #{num}
+	</select>
+  
+  
    <select id="getCount" resultType="Long" parameterType="Pager">
   		SELECT COUNT(NUM) FROM NOTICE
   		WHERE 
@@ -56,7 +65,10 @@
   	</select>
   	
   	<insert id="setInsert" parameterType="BoardDTO">
-  		INSERT INTO NOTICE VALUES(notice_seq.nextval,#{title},#{contents},#{writer},sysdate,0)
+  	<selectKey order="BEFORE" resultType="Long" keyProperty="num">
+  		SELECT notice_seq.nextval FROM DUAL
+  	</selectKey>
+  		INSERT INTO NOTICE VALUES(#{num},#{title},#{contents},#{writer},sysdate,0)
   	</insert>
   	
   	<delete id="setDelete" parameterType="BoardDTO">

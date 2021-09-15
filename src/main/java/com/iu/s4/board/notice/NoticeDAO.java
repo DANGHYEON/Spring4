@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.iu.s4.board.BoardDAO;
 import com.iu.s4.board.BoardDTO;
+import com.iu.s4.board.BoardFilesDTO;
 import com.iu.s4.board.util.Pager;
 
 @Repository
@@ -60,6 +61,19 @@ public class NoticeDAO implements BoardDAO {
 	public int setHitUpdate(BoardDTO boardDTO) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE+"setHitUpdate", boardDTO);
+	}
+	
+	@Override
+	public int setFile(BoardFilesDTO boardFilesDTO) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.insert(NAMESPACE+"setFile", boardFilesDTO);
+	}
+	
+	@Override
+	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE+"getFiles", boardDTO);
 	}
 	
 	
