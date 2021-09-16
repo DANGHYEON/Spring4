@@ -86,10 +86,20 @@ public class NoticeController {
 	}
 	
 	@GetMapping("delete")
-	public String delete(BoardDTO boardDTO) throws Exception {
+	public ModelAndView delete(BoardDTO boardDTO) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		int result = noticeService.setDelete(boardDTO);
+		String message = " Delete Fail";
+		if(result>0) {
+			message = "Delete Success";
+		}
+		//"redirect:./list"
+		mv.addObject("msg", message);
+		mv.addObject("url", "./list");
 		
-		return "redirect:./list";
+		mv.setViewName("common/result");
+		
+		return mv;
 	}
 	
 	@GetMapping("update")
