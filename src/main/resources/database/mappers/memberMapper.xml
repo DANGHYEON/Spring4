@@ -5,6 +5,30 @@
   
   <mapper namespace="com.iu.s4.member.MemberDAO">
   
+  <resultMap type="MemberDTO" id="getLoginResult">
+		<id column="id" property="id"/>
+		<result column="pw" property="pw"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<!-- 1:1 관계, DTO내에 다른 DTO 하나가 멤버변수로 선언 -->
+		<association property="memberFilesDTO" javaType="MemberFilesDTO">
+			<id column="num" property="num"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+  </resultMap>
+  
+  
+  <select id="getLogin" parameterType="MemberDTO" resultMap="getLoginResult">
+  		SELECT M.*, MF.*
+		FROM MEMBER M
+		    LEFT JOIN
+		    MEMBERFILES MF
+		ON (M.ID = MF.ID)
+		WHERE M.ID=#{id} AND PW=#{pw}
+  </select>
+  
   
   <insert id="setFileInsert" parameterType="MemberFilesDTO" >
   	INSERT INTO MEMBERFILES
@@ -15,11 +39,7 @@
   	SELECT * FROM MEMBERFILES WHERE ID=#{id}
   </select>
     
-  
-  <select id="getLogin" parameterType="MemberDTO" resultType="MemberDTO">
-  	SELECT * FROM MEMBER WHERE ID=#{id} AND PW=#{pw}
-  </select>
-  
+      
   <insert id="setJoin" parameterType="MemberDTO">
   	INSERT INTO MEMBER VALUES(#{id},#{pw},#{name},#{phone},#{email})
   </insert>
