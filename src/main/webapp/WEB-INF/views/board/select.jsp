@@ -31,6 +31,25 @@
 		</div>
 	</c:forEach>
 	
+	
+	
+	<hr>
+	<div>
+	<div class="mb-3">
+  			<label for="writer" class="form-label">Writer</label>
+  				<input type="text" class="form-control" name="writer" id="writer" value="${member.id}" placeholder="Enter writer" readonly="readonly">
+			</div>		
+				
+			
+			<div class="mb-3">
+			<label for="contents">Contents</label>
+  		<textarea class="form-control" name="contents" placeholder="Leave a comment here" id="contents" style="height: 100px"></textarea>
+			</div>
+	
+	<button type="button" id="comment" class="btn btn-success">Add</button>
+	
+	</div>
+	<hr>
 
 	
 	<div>
@@ -43,6 +62,19 @@
 		<a href="./reply?num=${dto.num}">Reply</a>
 	</c:if>
 	</div>
+	
+	<script type="text/javascript">
+		$("#comment").click(function(){
+			//작성자, 내용을 콘솔에 출력
+			let writer = $("#writer").val();
+			let contents = $("#contents").val();
+			$.post('./comment',{num:'${dto.num}',writer:writer, contents:contents}, function(result){
+					console.log(result.trim());
+			})
+			
+			console.log(writer, contents);
+		})
+	</script>
 	
 </body>
 </html>
