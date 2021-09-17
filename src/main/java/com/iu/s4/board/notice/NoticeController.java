@@ -32,6 +32,14 @@ public class NoticeController {
 		
 	}
 	
+	@GetMapping("down")
+	public ModelAndView fileDown(BoardFilesDTO boardFilesDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("dto",boardFilesDTO);
+		mv.setViewName("fileDown");
+		return mv;
+	}
+	
 	
 	
 	@GetMapping("list")

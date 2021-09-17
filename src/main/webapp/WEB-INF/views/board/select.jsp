@@ -16,7 +16,9 @@
 	<div>
 	<h2>글번호 : ${dto.num}</h2>
 	<h2>글제목 : ${dto.title}</h2>
-	<h2>글내용 : ${dto.contents}</h2>
+	<div>
+		${dto.contents}
+	</div>
 	<h2>작성자 : ${dto.writer}</h2>
 	<h2>작성일 : ${dto.regDate}</h2>
 	<h2>조회수 : ${dto.hits}</h2>
@@ -24,7 +26,8 @@
 	
 	<c:forEach items="${dto.files}" var="f">
 		<div>
-		<img alt="" src="../resources/upload/${board}/${f.fileName}">
+		<%-- <a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a> --%>
+		<a href="./down?fileName=${f.fileName}">${f.oriName}</a>
 		</div>
 	</c:forEach>
 	
