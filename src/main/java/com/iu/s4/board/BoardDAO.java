@@ -32,5 +32,7 @@ public interface BoardDAO {
 	
 	
 	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception;
+	
+	public int setComment(CommentsDTO commentsDTO) throws Exception;
 
 }

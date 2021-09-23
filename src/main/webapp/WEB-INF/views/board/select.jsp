@@ -70,10 +70,9 @@
 			let contents = $("#contents").val();
 			$.post('./comment',{num:'${dto.num}',writer:writer, contents:contents}, function(result){
 					console.log(result.trim());
-			})
+			});
 			
-			console.log(writer, contents);
-		})
+		});
 	</script>
 	
 </body>

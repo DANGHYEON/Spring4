@@ -5,6 +5,12 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
   
+  
+  	<insert id="setComment" parameterType="CommentsDTO">
+  		INSERT INTO COMMENTS VALUES(comments_seq.nextval,#{num},#{writer},#{contents},sysdate,#{board})
+  	</insert>
+  
+  
   	<insert id="setFile" parameterType="BoardFilesDTO">
   		INSERT INTO noticefiles values(files_seq.nextval, #{num},#{fileName},#{oriName})
   	</insert>
@@ -100,8 +106,9 @@
   	<update id="setUpdate" parameterType="BoardDTO">
   		UPDATE NOTICE SET TITLE=#{title}, CONTENTS=#{contents}, REGDATE=sysdate
   		WHERE NUM =#{num}
-  	</update> 
-  
-	
-	  
+  	</update>
+  	
+  	
+  	 
+   
   </mapper>

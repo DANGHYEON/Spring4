@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.iu.s4.board.CommetsDTO;
+import com.iu.s4.board.CommentsDTO;
 import com.iu.s4.board.BoardDTO;
 import com.iu.s4.board.BoardFilesDTO;
 import com.iu.s4.board.util.Pager;
@@ -34,12 +34,19 @@ public class NoticeController {
 	}
 	
 	@PostMapping("comment")
-	public void setComment(CommetsDTO commetsDTO) throws Exception {
-		System.out.println(commetsDTO.getNum());
-		System.out.println(commetsDTO.getContents());
-		System.out.println(commetsDTO.getWriter());
+	public ModelAndView setComment(CommentsDTO commentsDTO) throws Exception {
+//		System.out.println(commetsDTO.getNum());
+//		System.out.println(commetsDTO.getContents());
+//		System.out.println(commetsDTO.getWriter());
+		ModelAndView mv = new ModelAndView();
+		commentsDTO.setBoard("N");
 		
-		commetsDTO.setBoard("N");
+		int result = noticeService.setComment(commentsDTO);
+		mv.setViewName("common/ajaxResult");
+		mv.addObject("result", result);
+		
+		return mv;
+		
 	}
 	
 	

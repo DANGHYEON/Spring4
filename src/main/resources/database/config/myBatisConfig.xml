@@ -15,6 +15,7 @@
   		<typeAlias type="com.iu.s4.member.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.iu.s4.member.MemberFilesDTO" alias="MemberFilesDTO"/>
   		<typeAlias type="java.util.List" alias="List"/>
+  		<typeAlias type="com.iu.s4.board.CommentsDTO" alias="CommentsDTO"/>
   	</typeAliases>
   
   

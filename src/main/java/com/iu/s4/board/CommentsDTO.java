@@ -2,7 +2,7 @@ package com.iu.s4.board;
 
 import java.sql.Date;
 
-public class CommetsDTO {
+public class CommentsDTO {
 	
 	private long commentNum;
 	private long num;

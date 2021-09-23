@@ -26,5 +26,8 @@ public interface BoardService {
 	//글수정
 	public int setUpdate(BoardDTO boardDTO) throws Exception;
 	
+	public int setComment(CommentsDTO commentsDTO) throws Exception;
+	
+	
 
 }
