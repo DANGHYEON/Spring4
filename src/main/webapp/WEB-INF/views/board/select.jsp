@@ -32,6 +32,15 @@
 	</c:forEach>
 	
 	
+		<!-- comment list -->
+	<div id = "commentList" data-board-num="${dto.num}">
+		
+	
+	
+	</div>
+	
+	
+	
 	
 	<hr>
 	<div>
@@ -50,7 +59,9 @@
 	
 	</div>
 	<hr>
+	
 
+	
 	
 	<div>
 	<c:if test="${not empty member and member.id eq dto.writer}">
@@ -64,12 +75,39 @@
 	</div>
 	
 	<script type="text/javascript">
+	
+	
+		getCommentList();
+		
+	
+		function getCommentList(){
+			let num = $("#commentList").attr("data-board-num");
+			$.ajax({
+				type: "GET",
+				url: "./getCommentList",
+				data: {num:num},
+				success: function(result){
+					result = result.trim();
+					$("#commentList").html(result);
+				},
+				error:function(xhr,status,error){
+					console.log(error);
+				}
+				
+			});
+		}
+	
+	
+	
 		$("#comment").click(function(){
 			//작성자, 내용을 콘솔에 출력
 			let writer = $("#writer").val();
 			let contents = $("#contents").val();
 			$.post('./comment',{num:'${dto.num}',writer:writer, contents:contents}, function(result){
 					console.log(result.trim());
+					
+					$("#contents").val('');
+					getCommentList();
 			});
 			
 		});

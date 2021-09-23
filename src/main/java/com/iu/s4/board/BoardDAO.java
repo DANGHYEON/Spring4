@@ -1,6 +1,7 @@
 package com.iu.s4.board;
 
 import java.util.List;
+import java.util.Map;
 
 import com.iu.s4.board.util.Pager;
 
@@ -33,6 +34,10 @@ public interface BoardDAO {
 	
 	public List<BoardFilesDTO> getFiles(BoardDTO boardDTO) throws Exception;
 	
+	//댓글
 	public int setComment(CommentsDTO commentsDTO) throws Exception;
+	
+	//댓글 리스트
+	public List<CommentsDTO> getCommentList(Map<String, Object> map) throws Exception;
 
 }

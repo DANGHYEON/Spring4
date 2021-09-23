@@ -5,6 +5,16 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
   
+  	<select id="getCommentList" parameterType="Map" resultType="CommentsDTO">
+  		SELECT * FROM
+  		(SELECT rownum R, C.* FROM
+  		(SELECT * FROM COMMENTS 
+  		WHERE BOARD=#{comments.board} AND NUM=#{comments.num}
+  		ORDER BY COMMENTNUM DESC) C)
+  		WHERE R BETWEEN #{pager.startRow} AND #{pager.lastRow}
+  		
+  	</select>
+  
   
   	<insert id="setComment" parameterType="CommentsDTO">
   		INSERT INTO COMMENTS VALUES(comments_seq.nextval,#{num},#{writer},#{contents},sysdate,#{board})

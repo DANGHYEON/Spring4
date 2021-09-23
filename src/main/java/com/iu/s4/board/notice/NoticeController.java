@@ -33,6 +33,22 @@ public class NoticeController {
 		
 	}
 	
+	
+	@GetMapping("getCommentList")
+	public ModelAndView getCommentList(CommentsDTO commentsDTO, Pager pager) throws Exception{
+		commentsDTO.setBoard("N");
+		List<CommentsDTO> ar = noticeService.getCommentList(commentsDTO, pager);
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("comments", ar);
+		mv.setViewName("common/ajaxList");
+		
+		return mv;
+	}
+	
+	
+	
+	
 	@PostMapping("comment")
 	public ModelAndView setComment(CommentsDTO commentsDTO) throws Exception {
 //		System.out.println(commetsDTO.getNum());
@@ -79,6 +95,7 @@ public class NoticeController {
 		boardDTO = noticeService.getSelect(boardDTO);
 		List<BoardFilesDTO> ar = noticeService.getFiles(boardDTO);
 	//	mv.addObject("fileList", ar);
+		//List<CommentsDTO> comList = noticeService.getCommentList();
 		mv.addObject("dto", boardDTO);
 		mv.setViewName("board/select");
 		return mv;
