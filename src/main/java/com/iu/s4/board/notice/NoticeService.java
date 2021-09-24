@@ -29,13 +29,24 @@ public class NoticeService implements BoardService {
 	private ServletContext servletContext;
 	
 	
+	public int setCommentUpdate(CommentsDTO commentsDTO) throws Exception{
+		return noticeDAO.setCommentUpdate(commentsDTO);
+	}
+	
+	
+	
+	public int setCommentDelete(CommentsDTO commentsDTO) throws Exception {
+		return noticeDAO.setCommentDelete(commentsDTO);
+	}
+	
 	
 	
 	@Override
 	public List<CommentsDTO> getCommentList(CommentsDTO commentsDTO,Pager pager) throws Exception {
 		// TODO Auto-generated method stub
-		pager.setPerPage(5L); //
+		pager.setPerPage(5L); //보여줄 데이터 갯수
 		pager.makeRow();
+		pager.makeNum(noticeDAO.getCommentCount(commentsDTO)); //전체 데이터 갯수 가져와 넣기
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("comments", commentsDTO);
 		map.put("pager", pager);

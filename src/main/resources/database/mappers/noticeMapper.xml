@@ -5,6 +5,22 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
   
+  <update id="setCommentUpdate" parameterType="CommentsDTO">
+  	UPDATE COMMENTS SET CONTENTS=#{contents} WHERE COMMENTNUM=#{commentNum}
+  </update>
+  
+  
+  
+  <delete id="setCommentDelete" parameterType="CommentsDTO">
+  	DELETE COMMENTS WHERE COMMENTNUM = #{commentNum}
+  </delete>
+  
+  
+  	<select id="getCommentCount" parameterType="CommentsDTO" resultType="Long">
+  		SELECT COUNT(COMMENTNUM) FROM COMMENTS
+  		WHERE BOARD=#{board} AND NUM=#{num}
+  	</select>
+  
   	<select id="getCommentList" parameterType="Map" resultType="CommentsDTO">
   		SELECT * FROM
   		(SELECT rownum R, C.* FROM

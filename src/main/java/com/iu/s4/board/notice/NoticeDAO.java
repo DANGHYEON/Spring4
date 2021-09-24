@@ -20,6 +20,24 @@ public class NoticeDAO implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE = "com.iu.s4.board.notice.NoticeDAO.";
+	
+	
+	public int setCommentUpdate(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setCommentUpdate", commentsDTO);
+	}
+	
+	
+	public int setCommentDelete(CommentsDTO commentsDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setCommentDelete",commentsDTO);
+	}
+	
+	
+	public Long getCommentCount(CommentsDTO commentsDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCommentCount", commentsDTO);
+	}
+	
+	
+	
 
 	@Override
 	public Long getCount(Pager pager) throws Exception {
