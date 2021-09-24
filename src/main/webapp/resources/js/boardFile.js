@@ -13,7 +13,13 @@
  let num = 0;
 //  let index=0;
  
- 
+ function setCount(c){
+	count=c;
+}
+
+function updateCount(){
+	count--;
+}
 
  
  $("#btn1").click(function(){

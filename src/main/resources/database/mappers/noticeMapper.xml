@@ -5,10 +5,16 @@
   
   <mapper namespace="com.iu.s4.board.notice.NoticeDAO">
   
+  
+  <delete id="setFileDelete" parameterType="BoardFilesDTO">
+  	DELETE NOTICEFILES WHERE FILENUM=#{fileNum}
+  </delete>
+  
+  
+  
   <update id="setCommentUpdate" parameterType="CommentsDTO">
   	UPDATE COMMENTS SET CONTENTS=#{contents} WHERE COMMENTNUM=#{commentNum}
   </update>
-  
   
   
   <delete id="setCommentDelete" parameterType="CommentsDTO">
