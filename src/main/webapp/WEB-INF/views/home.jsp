@@ -23,17 +23,53 @@
 		<h3>Login을 하기전 보이는 문장</h3>
 		</c:if>
 
-<h1 id = "ar"></h1>
-<button id="btn">Click</button>
+<button id="btn">CLICK</button>
+<div>
+	<table id="r" class="table table-hover">
+		<tr>
+			<td>ID</td>
+			<td>TITLE</td>
+			<td>USERID</td>
+		</tr>
+	</table>
+	
+</div>
 
 <script type="text/javascript">
-	$("#btn").click(function(){
-		$.get("./ajax/t1?num=1", function(result){
-			console.log(result.trim());
-			$('#ar').html(result.trim());
-		});
-	});
-
+	$("#btn").click(function() {
+			$.ajax({
+				type : "GET",
+				url : "http://jsonplaceholder.typicode.com/posts",
+				success : function(result) {
+					console.log(result);
+					console.log(result[0]);
+				/* 	for(let ser = 0; ser<Object.keys(result).length; ser++ ){
+						console.log(result[ser].title);
+					} */
+					
+					for(let v1 of result){
+						let v = "<tr>";
+						v= v+"<td>";
+						v= v+ v1.id;
+						v= v+"</td>";
+						v= v+"<td>";
+						v= v+v1.title;
+						v= v+"</td>";
+						v= v+"<td>";
+						v= v+v1.userId;
+						v= v+"</td>";
+						v= v+"</tr>";
+						$("#r").append(v);
+						
+					}
+					
+				},
+				error:function(error){
+					console.log(error);
+				}
+				
+			});
+	})
 	
 </script>
 
